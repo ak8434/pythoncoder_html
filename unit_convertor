@@ -1,0 +1,461 @@
+from tkinter import ttk
+import tkinter as tk
+from tkinter import *
+
+root=  tk.Tk()
+root.title("Unit Converter")
+root.resizable(False,False)
+
+#adding frame to get the element align
+frame_1 = ttk.Frame(root  , width=25)
+frame_1.grid(row=1 , column=0 , pady=10)
+
+#adding second frame
+frame_2=ttk.Frame(root , width=25)
+frame_2.grid(row=3 , column=0,pady=10 )
+
+def unit_converter():
+    #adding heading of the window
+    logo = ttk.Label(root , text = "Unit Converter" , font=("Arial" , 40))
+    logo.grid(row=0 , column=0)
+
+ #-----------------------------------------------------------------------------------------------------------
+
+    #adding first entry_box to enter the number
+    entry_one = ttk.Entry(frame_1 , width=15 , font=("cursive" , 12))
+    entry_one.grid(row=1 ,column=0)
+
+#---------------------------------------------------------------------------------------------------------------
+
+    #adding combobox to give multiple options
+    combobox_1 = ttk.Combobox(frame_1 , width=6 , font=("cursive" , 12))
+    combobox_1.grid(row=1 , column=1)
+    combobox_1["values"]=("select","km" , "meter" , "cm", "mm" , "mile" , "yard" ,"inch")
+    combobox_1.current(0)
+
+#-------------------------------------------------------------------------------------------------------------
+
+    #adding a equal to sign
+    equal = ttk.Label(root , text="=" ,font=("monospace" , 25))
+    equal.grid(row=2 , column=0)
+
+ #-------------------------------------------------------------------------------------------------
+
+    #adding second entry_box to enter the number
+    entry_two = ttk.Entry(frame_2 , width=15 , font=("cursive" , 12))
+    entry_two.grid(row=1 ,column=0)
+
+ #---------------------------------------------------------------------------------------------------------------------
+
+    #adding combobox to give multiple options
+    combobox_2 = ttk.Combobox(frame_2 , width=6 , font=("cursive" , 12))
+    combobox_2.grid(row=1 , column=1)
+    combobox_2["values"]=("select", "meter" , "km" , "cm" , "mm" , "mile" , "yard" , "inch")
+    combobox_2.current(0)
+
+ #----------------------------------------------------------------------------------------------------------------------
+
+    #adding logic to the converter
+    def calculate():
+        number_1_string = entry_one.get()
+        number_1_int = int(number_1_string)
+        get_combobox_1 = combobox_1.get()
+        get_combobox_2 = combobox_2.get()
+
+        #adding conditional statements
+        def logic():
+
+            #for meter-cm
+            if get_combobox_1=="meter" and get_combobox_2=="cm":
+               entry_two.delete(0,END)
+               meter_cm = number_1_int*100
+               ans_string = str(meter_cm)
+               entry_two.insert(0,ans_string)
+
+                #for meter-meter
+            elif get_combobox_1=="meter" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 meter_meter = number_1_int*1
+                 ans_string = str(meter_meter)
+                 entry_two.insert(0,ans_string)
+
+                #for meter-km
+            elif get_combobox_1=="meter" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 meter_km = number_1_int*0.001
+                 ans_string = str(meter_km)
+                 entry_two.insert(0,ans_string)
+
+                #for meter-mm
+            elif get_combobox_1=="meter" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 meter_mm = number_1_int*1000
+                 ans_string = str(meter_mm)
+                 entry_two.insert(0,ans_string)
+
+                 #for meter-mile
+            elif get_combobox_1=="meter" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 meter_mile = number_1_int*0.0006213689
+                 ans_string = str(meter_mile)
+                 entry_two.insert(0,ans_string)
+
+                #for meter-yard
+            elif get_combobox_1=="meter" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 meter_yard = number_1_int*1.0936132983
+                 ans_string = str(meter_yard)
+                 entry_two.insert(0,ans_string)
+
+            #for meter-inch
+            elif get_combobox_1=="meter" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 meter_inch = number_1_int*39.37007874
+                 ans_string = str(meter_inch)
+                 entry_two.insert(0,ans_string)
+
+             #if combobox has no value
+            elif get_combobox_1=="select" or get_combobox_2=="select":
+                 entry_two.delete(0,END)
+                 entry_two.insert(0,"choose a unit")
+
+            else:
+                pass
+   #-------------------------------------------------------------------------------------------------------------
+
+            #for km-meter
+            if get_combobox_1=="km" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 km_meter = number_1_int*1000
+                 ans_string = str(km_meter)
+                 entry_two.insert(0,ans_string)
+
+            #for km-cm
+            elif get_combobox_1=="km" and get_combobox_2=="cm":
+                 entry_two.delete(0,END)
+                 km_cm = number_1_int*100000
+                 ans_string = str(km_cm)
+                 entry_two.insert(0,ans_string)
+
+            #for km-km
+            elif get_combobox_1=="km" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 km_km = number_1_int*1
+                 ans_string = str(km_km)
+                 entry_two.insert(0,ans_string)
+
+        #for km-mm
+            elif get_combobox_1=="km" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 km_mm = number_1_int*1000000
+                 ans_string = str(km_mm)
+                 entry_two.insert(0,ans_string)
+
+        #for km-mile
+            elif get_combobox_1=="km" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 km_mile = number_1_int*0.6213688756
+                 ans_string = str(km_mile)
+                 entry_two.insert(0,ans_string)
+
+            #for km-yard
+            elif get_combobox_1=="km" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 km_yard = number_1_int*1093.6132983
+                 ans_string = str(km_yard)
+                 entry_two.insert(0,ans_string)
+
+              #for km-inch
+            elif get_combobox_1=="km" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 km_inch = number_1_int*39370.07874
+                 ans_string = str(km_inch)
+                 entry_two.insert(0,ans_string)
+
+            else:
+                pass
+    #--------------------------------------------------------------------------------------
+
+      #for cm-cm
+            if get_combobox_1=="cm" and get_combobox_2=="cm":
+                 entry_two.delete(0,END)
+                 cm_cm = number_1_int*1
+                 ans_string = str(cm_cm)
+                 entry_two.insert(0,ans_string)
+
+                #for cm-mm
+            elif get_combobox_1=="cm" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 cm_mm = number_1_int*10
+                 ans_string = str(cm_mm)
+                 entry_two.insert(0,ans_string)
+
+            #for cm-km
+            elif get_combobox_1=="cm" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 cm_km = number_1_int*0.00001
+                 ans_string = str(cm_km)
+                 entry_two.insert(0,ans_string)
+
+            #for cm-mile
+            elif get_combobox_1=="cm" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 cm_mile = number_1_int*0.0000062137
+                 ans_string = str(cm_mile)
+                 entry_two.insert(0,ans_string)
+
+              #for cm-yard
+            elif get_combobox_1=="cm" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 cm_yard = number_1_int*0.010936133
+                 ans_string = str(cm_yard)
+                 entry_two.insert(0,ans_string)
+
+            #for cm-inch
+            elif get_combobox_1=="cm" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 cm_inch = number_1_int*0.3937007874
+                 ans_string = str(cm_inch)
+                 entry_two.insert(0,ans_string)
+
+            elif get_combobox_1=="cm" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 cm_meter = number_1_int*0.01
+                 ans_string = str(cm_meter)
+                 entry_two.insert(0,ans_string)
+
+            else:
+                pass
+ #----------------------------------------------------------------------------------------------------------------
+
+            #for mm-mm
+            if get_combobox_1=="mm" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 mm_mm = number_1_int*1
+                 ans_string = str(mm_mm)
+                 entry_two.insert(0,ans_string)
+
+                #for mm-cm
+            elif get_combobox_1=="mm" and get_combobox_2=="cm":
+                 entry_two.delete(0,END)
+                 mm_cm = number_1_int*0.1
+                 ans_string = str(mm_cm)
+                 entry_two.insert(0,ans_string)
+
+            #for mm-km
+            elif get_combobox_1=="mm" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 mm_km = number_1_int*0.000001
+                 ans_string = str(mm_km)
+                 entry_two.insert(0,ans_string)
+
+            #for mm_mile
+            elif get_combobox_1=="mm" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 mm_mile = number_1_int*6.213688756E-7
+                 ans_string = str(mm_mile)
+                 entry_two.insert(0,ans_string)
+
+              #for mm-yard
+            elif get_combobox_1=="mm" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 mm_yard = number_1_int*0.0010936133
+                 ans_string = str(mm_yard)
+                 entry_two.insert(0,ans_string)
+
+            #for mm-inch
+            elif get_combobox_1=="mm" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 mm_inch = number_1_int*0.0393700787
+                 ans_string = str(mm_inch)
+                 entry_two.insert(0,ans_string)
+
+               #for mm-meter
+            elif get_combobox_1=="mm" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 mm_meter = number_1_int*0.001
+                 ans_string = str(mm_meter)
+                 entry_two.insert(0,ans_string)
+
+            else:
+                pass
+
+    #-----------------------------------------------------------------------------------------------------------------------
+
+
+             #for mile-mile
+            if get_combobox_1=="mile" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 mile_mile = number_1_int*1
+                 ans_string = str(mile_mile)
+                 entry_two.insert(0,ans_string)
+
+                #for mile-cm
+            elif get_combobox_1=="mile" and get_combobox_2=="cm":
+                 entry_two.delete(0,END)
+                 mile_cm = number_1_int*160935
+                 ans_string = str(mile_cm)
+                 entry_two.insert(0,ans_string)
+
+            #for mile-km
+            elif get_combobox_1=="mile" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 mile_km = number_1_int*1.60935
+                 ans_string = str(mile_km)
+                 entry_two.insert(0,ans_string)
+
+            #for mile-mm
+            elif get_combobox_1=="mile" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 mile_mm = number_1_int*1609350
+                 ans_string = str(mile_mm)
+                 entry_two.insert(0,ans_string)
+
+              #for mile-yard
+            elif get_combobox_1=="mile" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 mile_yard = number_1_int*1760.0065617
+                 ans_string = str(mile_yard)
+                 entry_two.insert(0,ans_string)
+
+            #for mile-inch
+            elif get_combobox_1=="mile" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 mile_inch = number_1_int*63360.23622
+                 ans_string = str(mile_inch)
+                 entry_two.insert(0,ans_string)
+
+               #for mile-meter
+            elif get_combobox_1=="mile" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 mile_meter = number_1_int*1609.35
+                 ans_string = str(mile_meter)
+                 entry_two.insert(0,ans_string)
+
+            else:
+                pass
+
+#-----------------------------------------------------------------------------------------------------------------
+
+            #for yard-yard
+            if get_combobox_1=="yard" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 yard_yard = number_1_int*1
+                 ans_string = str(yard_yard)
+                 entry_two.insert(0,ans_string)
+
+                #for yard-cm
+            elif get_combobox_1=="yard" and get_combobox_2=="cm":
+                 entry_two.delete(0,END)
+                 yard_cm = number_1_int*91.44
+                 ans_string = str(yard_cm)
+                 entry_two.insert(0,ans_string)
+
+            #for yard-km
+            elif get_combobox_1=="yard" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 yard_km = number_1_int*0.0009144
+                 ans_string = str(yard_km)
+                 entry_two.insert(0,ans_string)
+
+            #for yard-mm
+            elif get_combobox_1=="yard" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 yard_mm = number_1_int*914.4
+                 ans_string = str(yard_mm)
+                 entry_two.insert(0,ans_string)
+
+              #for yard-mile
+            elif get_combobox_1=="yard" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 yard_mile = number_1_int*0.0005681797
+                 ans_string = str(yard_mile)
+                 entry_two.insert(0,ans_string)
+
+            #for yard-inch
+            elif get_combobox_1=="yard" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 yard_inch = number_1_int*36
+                 ans_string = str(yard_inch)
+                 entry_two.insert(0,ans_string)
+
+               #for yard-meter
+            elif get_combobox_1=="yard" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 yard_meter = number_1_int*0.9144
+                 ans_string = str(yard_meter)
+                 entry_two.insert(0,ans_string)
+
+            else:
+                pass
+
+#-------------------------------------------------------------------------------------------------------------
+
+            #for inch-inch
+            if get_combobox_1=="inch" and get_combobox_2=="inch":
+                 entry_two.delete(0,END)
+                 inch_inch = number_1_int*1
+                 ans_string = str(inch_inch)
+                 entry_two.insert(0,ans_string)
+
+                #for inch-cm
+            elif get_combobox_1=="inch" and get_combobox_2=="cm":
+                 entry_two.delete(0,END)
+                 inch_cm = number_1_int*2.54
+                 ans_string = str(inch_cm)
+                 entry_two.insert(0,ans_string)
+
+            #for inch-km
+            elif get_combobox_1=="inch" and get_combobox_2=="km":
+                 entry_two.delete(0,END)
+                 inch_km = number_1_int*0.0000254
+                 ans_string = str(inch_km)
+                 entry_two.insert(0,ans_string)
+
+            #for inch-mm
+            elif get_combobox_1=="inch" and get_combobox_2=="mm":
+                 entry_two.delete(0,END)
+                 inch_mm = number_1_int*25.4
+                 ans_string = str(inch_mm)
+                 entry_two.insert(0,ans_string)
+
+              #for inch-mile
+            elif get_combobox_1=="inch" and get_combobox_2=="mile":
+                 entry_two.delete(0,END)
+                 inch_mile = number_1_int*0.0000157828
+                 ans_string = str(inch_mile)
+                 entry_two.insert(0,ans_string)
+
+            #for inch-yard
+            elif get_combobox_1=="inch" and get_combobox_2=="yard":
+                 entry_two.delete(0,END)
+                 inch_yard = number_1_int*0.0277777778
+                 ans_string = str(inch_yard)
+                 entry_two.insert(0,ans_string)
+
+               #for inch-meter
+            elif get_combobox_1=="inch" and get_combobox_2=="meter":
+                 entry_two.delete(0,END)
+                 inch_meter = number_1_int*0.0254
+                 ans_string = str(inch_meter)
+                 entry_two.insert(0,ans_string)
+
+            else:
+                pass
+
+#---------------------------------------------------------------------------------------------------------------------------------
+
+
+        logic()
+
+
+
+    #adding button to get the answer
+    answer =ttk.Button(root , text="Convert" , command=calculate)
+    answer.grid(row=4 ,column=0)
+
+
+
+unit_converter()
+
+root.mainloop()
