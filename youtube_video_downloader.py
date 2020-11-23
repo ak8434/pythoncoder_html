@@ -6,6 +6,7 @@
 
 import tkinter as tk
 from tkinter import ttk
+#pip install pytube
 from pytube import YouTube
 
 root = tk.Tk()
