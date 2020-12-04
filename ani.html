@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+   <head>
+       <title>Elements inside elements</title>
+       <meta charset = "utf-8">
+       <meta name = "viewport" content="width = device-width, initial-scale">
+    </head>
+    <style>
+        #five , #three{
+            background : red;
+        }
+        #four{
+            background: yellow;
+        }
+        #one{
+            background : orange;
+        }
+        #two{
+            background: green;
+        }
+        #one , #two , #three , #four , #five{
+            color : skyblue;
+            border : 10px double black; 
+            border-radius: 55px 0px 100px 0px;
+            display : absolute;
+            float: left;
+            transition: background 3s;
+            
+        }
+        #one:hover{
+            background: black;
+        }
+        #one:hover #two{
+            background : red;
+        }
+        #one:hover #three{
+            background : orange;
+        }
+        #one:hover #four{
+            background : lightcyan;
+        }
+        #one:hover #five{
+            background: snow;
+        }
+    </style>
+    <body>
+        <h1>Elements inside elements</h1>
+        <fieldset id = "one">
+        <fieldset id = "two">
+            <fieldset id = "three">
+                <fieldset id = "four">
+                    <fieldset id = "five">
+                        <p>Kiwi</p>
+                    </fieldset>
+                    <p>Mango</p>
+                </fieldset>
+                <p>Banana</p>
+            </fieldset>
+            <p>Orange</p>
+        </fieldset>
+            <p>Apple</p>
+        </fieldset>
+    <!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+</html>
