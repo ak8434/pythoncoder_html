@@ -16,6 +16,7 @@ class Layout():
         self.frame1 = tk.Frame(root)
         self.frame2 = tk.Frame(root)
         self.frame3 = tk.Frame(root)
+        self.frame4 = tk.Frame(root)
         
     def menus(self):
         self.menu_bar = Menu(root)
@@ -46,7 +47,17 @@ class Layout():
         
         
     def scrolltext(self):
-        self.scrolledtext = scrolledtext.ScrolledText(self.frame3 , width = 100 , height =30)
+        self.scrolledtext = scrolledtext.ScrolledText(self.frame3 , width = 100 , height =25)
+        
+    def labelframe(self):
+        self.labelframe1  = tk.LabelFrame(self.frame4 ,text = "Title")
+        self.labelframe2 = tk.LabelFrame(self.frame4 ,text = "Meta")
+        self.labelframe3 = tk.LabelFrame(self.frame4 ,text = "Scipt")
+        
+    def label_frame_insert(self):
+        self.scrolltxt = scrolledtext.ScrolledText(self.labelframe1 ,width = 40 ,height =3)
+        self.scrolltxt1 = scrolledtext.ScrolledText(self.labelframe2 ,width =40 ,height =10)
+        self.scrolltxt2 = scrolledtext.ScrolledText(self.labelframe3 ,width = 40 ,height = 10)
         
     def scraping(self):
         #adding functionality to the software
@@ -65,14 +76,29 @@ class Layout():
             self.soup = BeautifulSoup(self.get_text ,"html.parser")
             self.beauty = self.soup.prettify()
             
+        def title():
+            self.get_title =self.soup.title.string
+            
+        def page_meta():
+            self.get_meta =self.soup.find_all("meta")
+            
+        def page_script():
+            self.get_script  =self.soup.find_all("script")
+            
         def insert_code():
-            self.data = self.beauty
-            self.scrolledtext.insert(tk.INSERT ,self.data)
+            self.scrolledtext.insert(tk.INSERT ,self.beauty)
+            self.scrolltxt.insert(tk.INSERT ,self.get_title)
+            self.scrolltxt1.insert(tk.INSERT ,self.get_meta)
+            self.scrolltxt2.insert(tk.INSERT ,self.get_script)
+            
             
         def connect_all():
             get()
             connect()
             beautify()
+            title()
+            page_meta()
+            page_script()
             insert_code()
             
         self.check.config(command = connect_all)
@@ -85,6 +111,9 @@ class Layout():
         
         def clear():
             self.scrolledtext.delete("1.0","end")
+            self.scrolltxt.delete("1.0","end")
+            self.scrolltxt1.delete("1.0","end")
+            self.scrolltxt2.delete("1.0","end")
             
         def new_gui():
             self.win = tk.Tk()
@@ -118,12 +147,19 @@ class Layout():
         self.frame1.grid(row = 0 ,column = 0)
         self.frame2.grid(row = 1 ,column = 0)
         self.frame3.grid(row = 2 ,column = 0)
+        self.frame4.grid(row = 2 , column = 1 ,sticky = "n")
         self.heading.grid(row = 0 , column  =0 , pady = 10)
         self.combobox.grid(row = 0 , column = 0)
         self.combowww.grid(row  =0 ,column = 1)
         self.entry.grid(row = 0 ,column = 2)
         self.check.grid(row =1 ,column=2 , sticky = "e")
         self.scrolledtext.grid(row = 0 ,column = 0)
+        self.labelframe1.grid(row =0 , column  =1 , sticky  ="w")
+        self.labelframe2.grid(row =1 , column  =1 , sticky  ="w")
+        self.labelframe3.grid(row =2 , column  =1 , sticky  ="w")
+        self.scrolltxt.grid(row = 0 , column = 0)
+        self.scrolltxt1.grid(row = 0 , column = 0)
+        self.scrolltxt2.grid(row = 0 , column = 0)
         self.clear.grid(row = 1 ,column =0 ,sticky = "e" ,padx = 80)
         self.save.grid(row = 1 ,column = 0 ,sticky = "e")
         
@@ -141,6 +177,8 @@ layout.entry_box()
 layout.button()
 layout.scraping()
 layout.scrolltext()
+layout.labelframe()
+layout.label_frame_insert()
 layout.clear_save()
 layout.save_clear_save()
 layout.gradding()
