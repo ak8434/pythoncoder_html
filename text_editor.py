@@ -1,4 +1,4 @@
-#txt editor
+#txt editor 1.1
 import tkinter as tk
 from os import path
 from tkinter import filedialog as fd
