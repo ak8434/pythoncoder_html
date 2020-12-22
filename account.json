@@ -1,0 +1,15 @@
+{
+    "Subject" : "Accounts",
+    "whatisaccounting" : "Process of Identifying  , measuring  , recording , the business transaction and communicating to the interested user.",
+    "objectiveofaccounting" : {
+
+        "one"  : " Maintain record of the business transaction",
+        "two" : "Calculate profit and loss",
+        "three" : "Depict financial position",
+        "four" : "to make information to various groups and user."
+    },
+    "fixedasset" : "Economic resources of an enterprise that can be usually expressed in montary terms.",
+    "revenue" :  "Amounts of money earned by an enterprise by selling goods or by providing services to the customers.",
+    "expenses" : "Cost incurred by a business in the process of earning revenue"
+
+}
